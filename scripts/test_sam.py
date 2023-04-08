@@ -16,11 +16,11 @@ sam.to(device=device)
 
 predictor = SamPredictor(sam)
 
-image = cv2.imread('../truck.jpg')
+image = cv2.imread('../aa831030-20ac-463f-83db-50224d646140.jpg')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 predictor.set_image(image)
-input_point = np.array([[500, 375]])
+input_point = np.array([[350, 350]])
 input_label = np.array([1])
 
 
