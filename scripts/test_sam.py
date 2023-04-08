@@ -16,20 +16,25 @@ sam.to(device=device)
 
 predictor = SamPredictor(sam)
 
-image = cv2.imread('../aa831030-20ac-463f-83db-50224d646140.jpg')
+image = cv2.imread('../436401b2-2596-42a8-8b55-01fcca60dad8.png')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 predictor.set_image(image)
 input_point = np.array([[350, 350]])
 input_label = np.array([1])
 
+input_box = np.array([11, 161, 672, 376])
 
 for _ in range(10):
     since = time.time()
+    # masks, scores, logits = predictor.predict(
+    #     point_coords=input_point,
+    #     point_labels=input_label,
+    #     multimask_output=True,
+    # )
     masks, scores, logits = predictor.predict(
-        point_coords=input_point,
-        point_labels=input_label,
-        multimask_output=True,
+        box=input_box,
+        multimask_output=False,
     )
     print(f"time cost: {time.time()-since:.4f} seconds")
 
