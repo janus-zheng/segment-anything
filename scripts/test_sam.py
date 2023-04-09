@@ -19,7 +19,6 @@ predictor = SamPredictor(sam)
 image = cv2.imread('../436401b2-2596-42a8-8b55-01fcca60dad8.png')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-predictor.set_image(image)
 input_point = np.array([[350, 350]])
 input_label = np.array([1])
 
@@ -27,6 +26,7 @@ input_box = np.array([11, 161, 672, 376])
 
 for _ in range(10):
     since = time.time()
+    predictor.set_image(image)
     # masks, scores, logits = predictor.predict(
     #     point_coords=input_point,
     #     point_labels=input_label,
